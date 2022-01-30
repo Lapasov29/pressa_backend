@@ -1,0 +1,48 @@
+[
+    {
+        "sub_category_id": 1,
+        "category_id": 1,
+        "title": "Frontend"
+    },
+    {
+        "sub_category_id": 2,
+        "category_id": 1,
+        "title": "Backend"
+    },
+    {
+        "sub_category_id": 3,
+        "category_id": 1,
+        "title": "Mobile development"
+    },
+    {
+        "sub_category_id": 4,
+        "category_id": 1,
+        "title": "SMM"
+    },
+    {
+        "sub_category_id": 4,
+        "category_id": 2,
+        "title": "Management"
+    },
+    {
+        "sub_category_id": 5,
+        "category_id": 2,
+        "title": "Credit and audit"
+    },
+    {
+        "sub_category_id": 6,
+        "category_id": 3,
+        "title": "Math"
+    },
+    {
+        "sub_category_id": 7,
+        "category_id": 3,
+        "title": "Physics"
+    },
+    {
+        "sub_category_id": 8,
+        "category_id": 3,
+        "title": "Reading"
+    }
+
+]

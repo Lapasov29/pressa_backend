@@ -1,0 +1,67 @@
+[
+    {
+        "event_id": 1,
+        "orginazer": "Anvar Lapasov",
+        "imageUrl": "/files/node.jpg",
+        "title": "NodeJs master-klass",
+        "date": 1234324123213,
+        "category_id": 1,
+        "sub_category_id": 2,
+        "short_info": "NodeJs haqida master-klassda ushbu texnalogiya foydalari haqida gaplashamiz.",
+        "long_info": "NodeJs texnologiyani hozirda keng qo'llanilib kelinayotgan texnologiyalardan bittasi. Shuning uchun, ushbu texnologiyani ustunliklari va kamchiliklari haqida gaplashamiz.",
+        "seen": 400,
+        "status": 1
+    },
+    {
+        "event_id": 2,
+        "orginazer": "Temurbek Adhamov",
+        "imageUrl": "/files/SMM.jpg",
+        "title": "Biznesda SMMni o'rni",
+        "date": 123432412322332,
+        "category_id": 1,
+        "sub_category_id": 4,
+        "short_info": "Yaxshi biznes uchun SMM qanchalik muhim?.",
+        "long_info": "Yaxshi biznes uchun SMM qanchalik muhimligi haqida gaplashamiz.",
+        "seen": 534,
+        "status": 1
+    },
+    {
+        "event_id": 3,
+        "orginazer": "Alisher Qosimov",
+        "imageUrl": "/files/Java.jpg",
+        "title": "Java master-klass",
+        "date": 1234324123232,
+        "category_id": 1,
+        "sub_category_id": 2,
+        "short_info": "Java haqida master-klassda ushbu til imkoniyatlari haqida gaplashamiz.",
+        "long_info": "Java tili hozirda keng qo'llanilib kelinayotgan tillardan bittasi. Shuning uchun, ushbu til ustunliklari va kamchiliklari haqida gaplashamiz.",
+        "seen": 443,
+        "status": 2
+    },
+    {
+        "event_id": 4,
+        "orginazer": "Hasan Mamasaidov",
+        "imageUrl": "/files/Mfactor.jpg",
+        "title": "Biznesni muvaffaqqiyatli yuritish.",
+        "date": 1234326523213,
+        "category_id": 2,
+        "sub_category_id": 4,
+        "short_info": "Biznesni nozik tomonlari",
+        "long_info": "fadfasd dsfsadfsadfs fsdafsdaf sadfsadfsadf fadsfsadf asdfsafdsaf asdfdsfaf afdsfdsfa fasdfasdf afsdfad.",
+        "seen": 12000,
+        "status": 1
+    },
+    {
+        "event_id": 5,
+        "orginazer": "Ikrom Sharif",
+        "imageUrl": "/files/ta'lim.jpg",
+        "title": "Yosh bolalarni kitobga jalb qilish",
+        "date": 1234324123323,
+        "category_id": 3,
+        "sub_category_id": 8,
+        "short_info": "Farzandlarimizni kitobga to'g'ri targ'ib qilaylik",
+        "long_info": "gkldfsjgklf; g gfdskljgkldfsjgkldfsjg dkfgj dsfl gjdfkg jdfskgj dkfjgkdlfsgjkdflgj lkdfsg jldgj fskdjg;fkdjgs.",
+        "seen": 754,
+        "status": 1
+    }
+]
