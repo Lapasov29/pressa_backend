@@ -14,8 +14,8 @@
         "event_link": "http://www.googlemaps.com",
         "short_info": "NodeJs haqida master-klassda ushbu texnalogiya foydalari haqida gaplashamiz.",
         "long_info": "NodeJs texnologiyani hozirda keng qo'llanilib kelinayotgan texnologiyalardan bittasi. Shuning uchun, ushbu texnologiyani ustunliklari va kamchiliklari haqida gaplashamiz.",
-        "seen": 400,
-        "status": 1
+        "seen": 100,
+        "status": 3
     },
     {
         "event_id": 2,
@@ -87,6 +87,6 @@
         "short_info": "Farzandlarimizni kitobga to'g'ri targ'ib qilaylik",
         "long_info": "gkldfsjgklf; g gfdskljgkldfsjgkldfsjg dkfgj dsfl gjdfkg jdfskgj dkfjgkdlfsgjkdflgj lkdfsg jldgj fskdjg;fkdjgs.",
         "seen": 754,
-        "status": 1
+        "status": 3
     }
 ]
