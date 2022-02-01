@@ -3,6 +3,9 @@ const GET = (req, res) => {
         const {id} = req.params
 
         let events = req.select('events')
+        events.map(e => {
+            delete e.organizer_status
+        })
         
         if(id){
             const ev = events.find(e => e.event_id == id)
@@ -16,6 +19,17 @@ const GET = (req, res) => {
     }
 }
 
+const POST = (req, res) => {
+    
+}
+
+const PUT = (req, res) => {
+
+}
+
+
 export let controllers = {
-    GET
+    GET,
+    POST,
+    PUT
 }
