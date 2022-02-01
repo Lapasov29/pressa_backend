@@ -20,6 +20,11 @@
         "title": "SMM"
     },
     {
+        "sub_category_id": 5,
+        "category_id": 1,
+        "title": "Grafik dizayn"
+    },
+    {
         "sub_category_id": 4,
         "category_id": 2,
         "title": "Management"
