@@ -4,9 +4,9 @@ import validate from "../middlewares/validation.js"
 
 const router = Router()
 
-router.get('/events', controllers.GET)
-router.get('/events/:id', controllers.GET)
-router.post('/events', validate,  controllers.POST)
-router.put('/events', controllers.PUT)
+router.get('/', controllers.GET)
+router.get('/:id', controllers.GET)
+router.post('/', validate,  controllers.POST)
+router.put('/', controllers.PUT)
 
 export default router
