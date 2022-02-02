@@ -9,8 +9,7 @@ const model = (req, res, next) => {
             files = files ? JSON.parse(files) : []
             return files
         } catch (error) {
-            throw new Error(error.message)
-			// return next( new ServerError(error.message) )
+			return next( new ServerError(error.message) )
         }
     }
 
@@ -19,8 +18,7 @@ const model = (req, res, next) => {
             fs.writeFileSync(path.join(process.cwd(), 'src', 'database', fileName + '.json'), JSON.stringify(data, null, 4))
             return true
         }catch(error){
-            throw new Error(error.message)
-			// return next( new ServerError(error.message) )
+			return next( new ServerError(error.message) )
         }
     }
     return next()

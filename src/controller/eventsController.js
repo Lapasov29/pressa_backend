@@ -1,6 +1,7 @@
 import path from 'path'
+import errors from '../utils/error.js'
 
-const GET = (req, res) => {
+const GET = (req, res, next) => {
     try {
         const [date, month, year] = new Date(Date.now()).toLocaleDateString("uz-UZ").split("/")
         const [hour, minute] = new Date(Date.now()).toLocaleTimeString("uz-UZ").split(/:| /)
@@ -25,8 +26,7 @@ const GET = (req, res) => {
         return next(error)
     }
 }
-
-const POST = async (req, res) => {
+const POST = async (req, res, next) => {
     try {
         let {
             orginazer,
@@ -82,50 +82,50 @@ const POST = async (req, res) => {
     
         events.push(newEvent)
         req.insert('events', events)
+
+        return res.status(201).json({
+			event: newEvent,
+			message: "The event has been added!"
+		})
+
     } catch (error) {
-        console.log(error);
+        return next(error)
     }
 }
 
-const PUT = (req, res) => {
+const PUT = (req, res, next) => {
     try {
         const { eventId, seen, eventStatus} = req.body
         let events = req.select('events')
         if(!eventId){
-            throw new Error("eventId must be provided")
+            throw new errors.ClientError(400, "eventId must be provided")
         }
         let find = events.find(e => e.event_id == eventId)
         if(!find){
-            throw new Error("There is no such event!")
+            throw new errors.ClientError(404, "There is no such event!")
         }
         if(typeof eventStatus != 'undefined' && ![1, 2, 3].includes(eventStatus)){
-            throw new Error("eventStatus must be valid!")
+            throw new errors.ClientError(400, "eventStatus must be valid!")
         }
-        if(typeof seen != 'number' && seen || seen < 0){
-            throw new Error("seen must be valid!")
+        if(typeof seen != 'number' || seen < 0 || (Number(seen) === seen && seen % 1 !== 0)){
+            throw new errors.ClientError(400, "seen must be valid!")
         }
-        if(seen || eventStatus){
-            events.map(e => {
-                if(e.event_id == eventId){
-                    e.seen = seen ? seen : e.seen
-                    e.status = eventStatus? eventStatus : e.status
-                }
-            })
-            req.insert('events', events)
-        } 
+        find.seen = seen ? seen : find.seen
+        find.status = eventStatus ? eventStatus : find.status
+
+        req.insert('events', events)
 
         res.status(201).json({
             message: "The event has been successfully edited!",
             status: 201
         })
     } catch (error) {
-        // return next(error)
-        res.json({ message: error.message })
+        return next(error)
     }
 }
 
 
-export let controllers = {
+export const controllers = {
     GET,
     POST,
     PUT
