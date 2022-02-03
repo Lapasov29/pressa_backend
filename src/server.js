@@ -5,6 +5,7 @@ import fileUpload  from "express-fileupload"
 import path from 'path'
 import errors from "./utils/error.js"
 
+
 const PORT = process.env.PORT || 4000
 const app = express()
 
