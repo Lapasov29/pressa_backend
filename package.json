@@ -15,7 +15,9 @@
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "express-fileupload": "^1.2.1",
-    "joi": "^17.6.0"
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "sha256": "^0.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

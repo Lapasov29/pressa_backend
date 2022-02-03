@@ -1,24 +1,35 @@
 import path from 'path'
 import errors from '../utils/error.js'
+import fs from 'fs'
+
+function timeConverter(milliseconds) {
+    const [date, month, year] = new Date(milliseconds).toLocaleDateString("uz-UZ").split("/")
+    const [hour, minute] = new Date(milliseconds).toLocaleTimeString("uz-UZ").split(/:| /)
+    let time = month + '/' + date + '/' + year + ' ' + hour + ':' + minute
+    return time
+}
 
 const GET = (req, res, next) => {
     try {
-        const [date, month, year] = new Date(Date.now()).toLocaleDateString("uz-UZ").split("/")
-        const [hour, minute] = new Date(Date.now()).toLocaleTimeString("uz-UZ").split(/:| /)
-
-        let time = month + '/' + date + '/' + year + ' ' + hour + ':' + minute
-        let date2 = new Date(time)
-        let milliseconds = date2.getTime()
+        let date = new Date(timeConverter(Date.now()))
+        let currentTime = date.getTime()
 
         const {id} = req.params
         let events = req.select('events')
-        events = events.filter(event => event.date > milliseconds)
-        
+        events = events.filter((event, i)=> {
+            if(event.date > currentTime) return event
+            // fs.unlinkSync(path.join(process.cwd(), 'src', 'files', event.imageUrl))
+
+        })
+        req.insert('events', events)
         if(id){
             const ev = events.find(e => e.event_id == id)
             return res.json(ev)
         }else{
             events.sort((a, b) => Number(a.date) - Number(b.date))
+            events.map(e => {
+                e.date = timeConverter(e.date)
+            })
             return res.json(events)
         }
 
@@ -26,6 +37,7 @@ const GET = (req, res, next) => {
         return next(error)
     }
 }
+
 const POST = async (req, res, next) => {
     try {
         let {
@@ -45,22 +57,13 @@ const POST = async (req, res, next) => {
     
         const file = await req.files.file
 
-        if(mode == 'offline') {
-            mode = 1
-        }
-        else if(mode == 'online') {
-            mode = 2
-        }
+        sana = new Date(sana).getTime()
 
-        category_id = parseInt(category_id)
-        sub_category_id = parseInt(sub_category_id)
-
-        let result = new Date(sana)
-        sana = result.getTime()
         let events = req.select('events')
 
         let fileName = (Date.now() % 1000) + file.name.trim()
         file.mv( path.join(process.cwd(), 'src', 'files', fileName) )
+
         const newEvent = {
             event_id: events.length ? events[events.length - 1].event_id + 1 : 1,
             orginazer,
@@ -123,7 +126,6 @@ const PUT = (req, res, next) => {
         return next(error)
     }
 }
-
 
 export const controllers = {
     GET,

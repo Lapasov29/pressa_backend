@@ -27,7 +27,7 @@ const schema = Joi.object({
 
     title: Joi.string()
     .min(2)
-    .max(70)
+    .max(100)
     .trim()
     .required(),
 
@@ -37,7 +37,7 @@ const schema = Joi.object({
 
     category_id: Joi.number()
     .integer()
-    .greater(1)
+    .greater(0)
     .less(7)
     .required(),
 
@@ -53,17 +53,17 @@ const schema = Joi.object({
     .max(2)
     .required(),
 
-    event_link: Joi.link().required(),
+    event_link: Joi.string().uri().required(),
 
     short_info: Joi.string()
     .min(10)
-    .max(70)
+    .max(300)
     .trim()
     .required(),
 
     long_info: Joi.string()
     .min(30)
-    .max(150)
+    .max(600)
     .trim()
     .required(),
 

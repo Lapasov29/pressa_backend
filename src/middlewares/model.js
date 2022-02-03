@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-// import { ServerError } from '../utils/error.js'
+import errors from '../utils/error.js'
 
 const model = (req, res, next) => {
     req.select = function (fileName) {
@@ -9,7 +9,7 @@ const model = (req, res, next) => {
             files = files ? JSON.parse(files) : []
             return files
         } catch (error) {
-			return next( new ServerError(error.message) )
+			return next( new errors.ServerError(error.message) )
         }
     }
 
@@ -18,7 +18,7 @@ const model = (req, res, next) => {
             fs.writeFileSync(path.join(process.cwd(), 'src', 'database', fileName + '.json'), JSON.stringify(data, null, 4))
             return true
         }catch(error){
-			return next( new ServerError(error.message) )
+			return next( new errors.ServerError(error.message) )
         }
     }
     return next()

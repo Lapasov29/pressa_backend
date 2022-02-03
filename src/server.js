@@ -1,10 +1,13 @@
 import express from "express";
 import cors from "cors"
-import router from "./router/events.js"
 import fileUpload  from "express-fileupload"
 import path from 'path'
+
 import errors from "./utils/error.js"
 
+import router from "./router/events.js"
+import adminRouter from "./router/admin.js"
+import authRouter from "./router/auth.js"
 
 const PORT = process.env.PORT || 4000
 const app = express()
@@ -15,7 +18,10 @@ app.use( model )
 app.use( cors() )
 app.use(fileUpload())
 app.use( express.json() )
+
 app.use('/', router)
+app.use('/auth', authRouter)
+app.use('/admin', adminRouter)
 
 app.get('/images/:imageName', (req, res) => {
     let imageName = req.params.imageName
@@ -23,7 +29,8 @@ app.get('/images/:imageName', (req, res) => {
 })
 
 app.use((error, req, res, next) => {
-	if([400, 404, 413, 415].includes(error.status)) {
+	console.log(error);
+	if([400, 401, 404, 413, 415].includes(error.status)) {
 		return res.status(error.status).send(error)
 	} 
 
