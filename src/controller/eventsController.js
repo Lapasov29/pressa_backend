@@ -60,7 +60,7 @@ const POST = async (req, res, next) => {
         let events = req.select('events')
 
         let fileName = (Date.now() % 1000) + file.name.trim()
-        // file.mv( path.join(process.cwd(), 'src', 'files', fileName) )
+        file.mv( path.join(process.cwd(), 'src', 'files', fileName) )
         const newEvent = {
             event_id: events.length ? events[events.length - 1].event_id + 1 : 1,
             orginazer,
@@ -81,7 +81,7 @@ const POST = async (req, res, next) => {
         }
     
         events.push(newEvent)
-        // req.insert('events', events)
+        req.insert('events', events)
 
         return res.status(201).json({
 			event: newEvent,
