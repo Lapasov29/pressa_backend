@@ -11,7 +11,6 @@ const checkToken = (req, res, next) => {
 		}
 
         const { id, agent } = jwt.verify(req.headers.token, 'PRESSA-KEY')
-
 		if(req['headers']['user-agent'] !== agent) {
 			throw new errors.ClientError(401, "The token is sent from wrong device!")
 		}
@@ -25,6 +24,7 @@ const checkToken = (req, res, next) => {
 
 		return next()
 	} catch(error) {
+		error.status = 401
 		return next(error)
 	}
 }

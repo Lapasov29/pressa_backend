@@ -6,7 +6,6 @@ import path from 'path'
 import errors from "./utils/error.js"
 
 import router from "./router/events.js"
-import adminRouter from "./router/admin.js"
 import authRouter from "./router/auth.js"
 
 const PORT = process.env.PORT || 4000
@@ -21,7 +20,6 @@ app.use( express.json() )
 
 app.use('/', router)
 app.use('/auth', authRouter)
-app.use('/admin', adminRouter)
 
 app.get('/images/:imageName', (req, res) => {
     let imageName = req.params.imageName

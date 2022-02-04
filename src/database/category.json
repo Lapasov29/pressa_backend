@@ -9,6 +9,10 @@
     },
     {
         "category_id": 3,
-        "category_title": "Education"
+        "category_title": "Ta'lim"
+    },
+    {
+        "category_id": 4,
+        "category_title": "Sport"
     }
 ]

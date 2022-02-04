@@ -31,7 +31,7 @@ const GET = (req, res, next) => {
         req.insert('events', events)
         if(id){
             const ev = events.find(e => e.event_id == id)
-            return responseSender(res, ev, "OK")
+            return responseSender(res, ev, ev ? "OK": "There is no such event")
         }else{
             events.sort((a, b) => Number(a.date) - Number(b.date))
             events.map(e => {
@@ -112,8 +112,12 @@ const PUT = (req, res, next) => {
         if(!find){
             throw new errors.ClientError(404, "There is no such event!")
         }
-
+        
+        const {path} = req.route
         if(eventStatus){
+            if(path != '/admin'){
+                throw new errors.ClientError(400, "Invalid request!")
+            }
             if(!(typeof eventStatus == 'number') || ![1, 2, 3].includes(eventStatus)){
                 throw new errors.ClientError(400, "eventStatus must be valid!")
             }

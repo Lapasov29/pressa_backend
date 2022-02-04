@@ -17,37 +17,77 @@
     {
         "sub_category_id": 4,
         "category_id": 1,
-        "title": "SMM"
+        "title": "Fullstack"
     },
     {
         "sub_category_id": 5,
         "category_id": 1,
-        "title": "Grafik dizayn"
-    },
-    {
-        "sub_category_id": 4,
-        "category_id": 2,
-        "title": "Management"
-    },
-    {
-        "sub_category_id": 5,
-        "category_id": 2,
-        "title": "Credit and audit"
+        "title": "Foundation"
     },
     {
         "sub_category_id": 6,
-        "category_id": 3,
-        "title": "Math"
+        "category_id": 2,
+        "title": "Ishlab chiqarish"
     },
     {
         "sub_category_id": 7,
-        "category_id": 3,
-        "title": "Physics"
+        "category_id": 2,
+        "title": "Xizmat ko'rsatish"
     },
     {
         "sub_category_id": 8,
+        "category_id": 2,
+        "title": "Xalqaro biznes"
+    },
+    {
+        "sub_category_id": 9,
+        "category_id": 2,
+        "title": "Startup"
+    },
+    {
+        "sub_category_id": 10,
         "category_id": 3,
-        "title": "Reading"
+        "title": "Kimyo"
+    },
+    {
+        "sub_category_id": 11,
+        "category_id": 3,
+        "title": "Fizika"
+    },
+    {
+        "sub_category_id": 12,
+        "category_id": 3,
+        "title": "Matematika"
+    },
+    {
+        "sub_category_id": 13,
+        "category_id": 3,
+        "title": "Adabiyot"
+    },
+    {
+        "sub_category_id": 14,
+        "category_id": 3,
+        "title": "Tarix"
+    },
+    {
+        "sub_category_id": 15,
+        "category_id": 4,
+        "title": "Futbol"
+    },
+    {
+        "sub_category_id": 16,
+        "category_id": 4,
+        "title": "Shaxmat"
+    },
+    {
+        "sub_category_id": 17,
+        "category_id": 4,
+        "title": "Box"
+    },
+    {
+        "sub_category_id": 18,
+        "category_id": 4,
+        "title": "Tennis"
     }
 
 ]
