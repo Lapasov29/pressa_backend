@@ -57,13 +57,13 @@ const schema = Joi.object({
 
     short_info: Joi.string()
     .min(10)
-    .max(300)
+    .max(500)
     .trim()
     .required(),
 
     long_info: Joi.string()
     .min(30)
-    .max(600)
+    .max(1000)
     .trim()
     .required(),
 

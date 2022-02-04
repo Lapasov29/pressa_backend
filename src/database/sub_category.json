@@ -88,6 +88,11 @@
         "sub_category_id": 18,
         "category_id": 4,
         "title": "Tennis"
+    },
+    {
+        "sub_category_id": 19,
+        "category_id": 3,
+        "title": "Tarbiya"
     }
 
 ]
