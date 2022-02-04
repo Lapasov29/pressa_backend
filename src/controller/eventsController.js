@@ -9,6 +9,13 @@ function timeConverter(milliseconds) {
     return time
 }
 
+function responseSender(response, event, message) {
+    response.status(201).json({
+        event,
+        message
+    })
+}
+
 const GET = (req, res, next) => {
     try {
         let date = new Date(timeConverter(Date.now()))
@@ -24,13 +31,13 @@ const GET = (req, res, next) => {
         req.insert('events', events)
         if(id){
             const ev = events.find(e => e.event_id == id)
-            return res.json(ev)
+            return responseSender(res, ev, "OK")
         }else{
             events.sort((a, b) => Number(a.date) - Number(b.date))
             events.map(e => {
                 e.date = timeConverter(e.date)
             })
-            return res.json(events)
+            return responseSender(res, events, "OK")
         }
 
     }catch(error){
@@ -86,10 +93,7 @@ const POST = async (req, res, next) => {
         events.push(newEvent)
         req.insert('events', events)
 
-        return res.status(201).json({
-			event: newEvent,
-			message: "The event has been added!"
-		})
+        return responseSender(res, newEvent, "The event has been added!")
 
     } catch (error) {
         return next(error)
@@ -98,30 +102,31 @@ const POST = async (req, res, next) => {
 
 const PUT = (req, res, next) => {
     try {
-        const { eventId, seen, eventStatus} = req.body
+        const { eventId, eventStatus} = req.body
         let events = req.select('events')
         if(!eventId){
             throw new errors.ClientError(400, "eventId must be provided")
         }
+
         let find = events.find(e => e.event_id == eventId)
         if(!find){
             throw new errors.ClientError(404, "There is no such event!")
         }
-        if(typeof eventStatus != 'undefined' && ![1, 2, 3].includes(eventStatus)){
-            throw new errors.ClientError(400, "eventStatus must be valid!")
+
+        if(eventStatus){
+            if(!(typeof eventStatus == 'number') || ![1, 2, 3].includes(eventStatus)){
+                throw new errors.ClientError(400, "eventStatus must be valid!")
+            }
+            
+            find.status = eventStatus ? eventStatus : find.status
         }
-        if(typeof seen != 'number' || seen < 0 || (Number(seen) === seen && seen % 1 !== 0)){
-            throw new errors.ClientError(400, "seen must be valid!")
-        }
-        find.seen = seen ? seen : find.seen
-        find.status = eventStatus ? eventStatus : find.status
+
+        find.seen = eventStatus ? find.seen : find.seen + 1
 
         req.insert('events', events)
+        
+        return responseSender(res, find, "The event has been updated!")
 
-        res.status(201).json({
-            message: "The event has been successfully edited!",
-            status: 201
-        })
     } catch (error) {
         return next(error)
     }

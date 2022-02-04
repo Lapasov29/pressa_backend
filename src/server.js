@@ -37,4 +37,4 @@ app.use((error, req, res, next) => {
 	return res.status(500).send(new errors.ServerError(""))
 })
 
-app.listen(PORT, () => console.log(`Server is running on http://localhost:4000`))
+app.listen(PORT, () => console.log(`Server is running on http://localhost:4000`)) 
